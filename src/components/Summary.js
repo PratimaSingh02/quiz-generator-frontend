@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Typography } from '@mui/material'
+import { VideoContext } from '../context';
 
 export default function Summary() {
+    const { summary } = useContext(VideoContext);
+
     return (
         <Box
             sx={{
@@ -20,13 +23,11 @@ export default function Summary() {
             >
                 Summary
             </Typography>
-            <Typography variant="body2">
-                There are multiple ways to generate lorem ipsum text in VS Code.
-
-                For example, you can use the built-in Emmet extension.
-
-                Open an HTML file, start typing lorem and click on the option.
-            </Typography>
+            {summary.map((para, index) =>
+                <Typography variant="body2" key={index} sx={{ marginTop: "1em" }}>
+                    {para}
+                </Typography>
+            )}
         </Box>
     )
 }

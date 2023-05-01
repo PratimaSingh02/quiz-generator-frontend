@@ -13,7 +13,8 @@ export default class Topbar extends Component {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    padding: "3em"
+                    padding: "3em",
+                    zIndex: 999
                 }}
             >
                 <Typography

@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Typography } from '@mui/material'
+import { VideoContext } from '../context';
 
-export default function Quiz() {
+export default function Recommendation() {
+    const { recommendations } = useContext(VideoContext);
+
     return (
         <Box
             sx={{
@@ -20,11 +23,15 @@ export default function Quiz() {
             >
                 Recommended
             </Typography>
-            <iframe width="350" height="220"
-                src="https://www.youtube.com/embed/tgbNymZ7vqY"
-                title="abc"
-            >
-            </iframe>
+            {recommendations.map((link, index) =>
+                <iframe width="350" height="220"
+                    src={link}
+                    title={index}
+                    key={index}
+                    className="iframe"
+                >
+                </iframe>
+            )}
         </Box>
     )
 }
