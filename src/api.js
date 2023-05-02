@@ -1,72 +1,65 @@
 import axios from "axios";
 
-export const getQuiz = async () => {
-    const response = [
-        {
-            question: "Select one of the following",
-            options: ["Apple", "Mango", "Banana"],
-            answer: 2
-        },
-        {
-            question: "Select one of the following",
-            options: ["Apple", "Mango", "Banana"],
-            answer: 1
-        },
-        {
-            question: "Select one of the following",
-            options: ["Apple", "Mango", "Banana"],
-            answer: 3
-        },
-        {
-            question: "Select one of the following",
-            options: ["Apple", "Mango", "Banana"],
-            answer: 1
-        },
-        {
-            question: "Select one of the following",
-            options: ["Apple", "Mango", "Banana"],
-            answer: 3
-        },
-    ];
-    try {
-        // response = await axios.get();
-    } catch (error) {
+export const getQuiz = async (videoId) => {
+  //   let response = {};
+  try {
+    let response = await axios.get(
+      "http://1dbb-34-87-186-180.ngrok.io/?video_id=" + videoId
+    );
+    console.log("response received");
+    response = JSON.stringify(response);
+    response = JSON.parse(response);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+  return {};
+};
 
-    }
-    return response;
-}
-
-export const getSummary = async () => {
-    const response = [
-        `There are multiple ways to generate lorem ipsum text in VS Code.
-                For example, you can use the built-in Emmet extension.
-                Open an HTML file, start typing lorem and click on the option.`,
-        `There are multiple ways to generate lorem ipsum text in VS Code.
-                For example, you can use the built-in Emmet extension.
-                Open an HTML file, start typing lorem and click on the option.`,
-        `There are multiple ways to generate lorem ipsum text in VS Code.
-                For example, you can use the built-in Emmet extension.
-                Open an HTML file, start typing lorem and click on the option.`,
-    ];
-    try {
-        // response = await axios.get();
-    } catch (error) {
-
-    }
-    return response;
-}
-
-export const getRecommendations = async () => {
-    const response = [
-        "https://www.youtube.com/embed/tgbNymZ7vqY",
-        "https://www.youtube.com/embed/tgbNymZ7vqY",
-        "https://www.youtube.com/embed/tgbNymZ7vqY",
-        "https://www.youtube.com/embed/tgbNymZ7vqY",
-    ];
-    try {
-        // response = await axios.get();
-    } catch (error) {
-
-    }
-    return response;
-}
+// {
+//     questions: [
+//       {
+//         question: "Select one of the following",
+//         options: ["Apple", "Mango", "Banana"],
+//         answer: "Apple",
+//       },
+//       {
+//         question: "Select one of the following",
+//         options: ["Apple", "Mango", "Banana"],
+//         answer: "Mango",
+//       },
+//       {
+//         question: "Select one of the following",
+//         options: ["Apple", "Mango", "Banana"],
+//         answer: "Banana",
+//       },
+//       {
+//         question: "Select one of the following",
+//         options: ["Apple", "Mango", "Banana"],
+//         answer: "Apple",
+//       },
+//       {
+//         question: "Select one of the following",
+//         options: ["Apple", "Mango", "Banana"],
+//         answer: "Mango",
+//       },
+//     ],
+//     summaries: [
+//       `There are multiple ways to generate lorem ipsum text in VS Code.
+//                 For example, you can use the built-in Emmet extension.
+//                 Open an HTML file, start typing lorem and click on the option.`,
+//       `There are multiple ways to generate lorem ipsum text in VS Code.
+//                 For example, you can use the built-in Emmet extension.
+//                 Open an HTML file, start typing lorem and click on the option.`,
+//       `There are multiple ways to generate lorem ipsum text in VS Code.
+//                 For example, you can use the built-in Emmet extension.
+//                 Open an HTML file, start typing lorem and click on the option.`,
+//     ],
+//     urls: [
+//       "https://www.youtube.com/embed/tgbNymZ7vqY",
+//       "https://www.youtube.com/embed/tgbNymZ7vqY",
+//       "https://www.youtube.com/embed/tgbNymZ7vqY",
+//       "https://www.youtube.com/embed/tgbNymZ7vqY",
+//     ],
+//   };

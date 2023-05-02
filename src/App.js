@@ -4,12 +4,14 @@ import Quiz from "./components/Quiz";
 import Summary from "./components/Summary";
 import Topbar from "./components/Topbar";
 import Recommendation from "./components/Recommendation";
-import { Box } from "@mui/material";
-
+import { Box, CircularProgress } from "@mui/material";
+import { useState } from "react";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+
   return (
-    <Box  >
+    <Box>
       <Topbar />
 
       <Box
@@ -17,19 +19,31 @@ function App() {
           marginTop: 20,
           display: "flex",
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <CustomTextField />
-        <CustomButton />
+        <CustomButton setLoading={setLoading} />
       </Box>
-
+      {loading && (
+        <Box
+          sx={{
+            width: "100vw",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
       <Box
         sx={{
           borderTop: "1px solid grey",
           marginTop: 5,
           height: "60vh",
-          display: "flex"
+          display: "flex",
         }}
       >
         <Summary />
